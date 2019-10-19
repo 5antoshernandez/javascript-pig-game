@@ -16,7 +16,7 @@ var activePlayer = 0;
 var previousRoll, currentRoll, gamePts;
 gamePts = 100;
 
-document.querySelector('.dice').style.display = "none";
+document.querySelector('.dice1').style.display = "none";
 
 
 function newGame() {
@@ -44,8 +44,8 @@ function roll() {
             firstRoll = false;
         } 
         currentRoll = Math.floor((Math.random() * 6) + 1);
-        document.querySelector('.dice').style.display = "block";
-        document.querySelector('.dice').src = "dice-" + currentRoll + ".png";
+        document.querySelector('.dice1').style.display = "block";
+        document.querySelector('.dice1').src = "dice-" + currentRoll + ".png";
         previousRoll = currentRoll;
         if (currentRoll == 6 && previousRoll == 6) {
             roundScore = 0;
