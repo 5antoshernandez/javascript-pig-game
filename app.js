@@ -11,12 +11,12 @@ GAME RULES:
 var scores = [0,0];
 var roundScore = 0;
 var gameState = false;
-var firstRoll = true;
 var activePlayer = 0;
-var previousRoll, currentRoll, gamePts;
+var dice1, dice2, gamePts;
 gamePts = 100;
 
 document.querySelector('.dice1').style.display = "none";
+document.querySelector('.dice2').style.display = "none";
 
 
 function newGame() {
@@ -38,24 +38,14 @@ function newGame() {
 
 function roll() {
     if (gameState) {
-        if (firstRoll) {
-            currentRoll = Math.floor((Math.random() * 6) + 1);
-            previousRoll = currentRoll;
-            firstRoll = false;
-        } 
-        currentRoll = Math.floor((Math.random() * 6) + 1);
+        dice1 = Math.floor((Math.random() * 6) + 1);
+        dice2 = Math.floor((Math.random() * 6) + 1);
         document.querySelector('.dice1').style.display = "block";
-        document.querySelector('.dice1').src = "dice-" + currentRoll + ".png";
-        previousRoll = currentRoll;
-        if (currentRoll == 6 && previousRoll == 6) {
-            roundScore = 0;
-            scores[activePlayer] = 0;
-            document.querySelector('#current-' + activePlayer).textContent = 0;
-            document.querySelector('#score-' + activePlayer).textContent = 0;
-            switchPlayers();
-        }
-        if (currentRoll != 1) {
-            roundScore += currentRoll;
+        document.querySelector('.dice1').src = "dice-" + dice1 + ".png";
+        document.querySelector('.dice2').style.display = "block";
+        document.querySelector('.dice2').src = "dice-" + dice2 + ".png";
+        if (dice1 != 1 && dice2 != 1) {
+            roundScore += dice1 + dice2;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         } else {
             roundScore = 0;
